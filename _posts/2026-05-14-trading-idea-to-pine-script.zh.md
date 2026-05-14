@@ -30,6 +30,11 @@ categories: [ai, chart, market]
 
 这些问题让人觉得麻烦，是很自然的。但策略的大部分内容就藏在这些麻烦的问题里。想法通常从一句话开始。策略则由几十个小决定组成。
 
+<figure class="article-figure">
+  <img src="/assets/images/posts/trading-idea-to-pine-script/strategy-rules.png" alt="图表想法被拆解成策略条件和代码结构的研究图片" loading="lazy" decoding="async">
+  <figcaption>好的想法可以从一句话开始，但可验证的策略只有在条件和例外都被写清楚时才会出现。</figcaption>
+</figure>
+
 Pine Script 之所以重要，是因为它会把这些小决定暴露出来。你必须决定在哪里调用 `strategy.entry()`，必须决定如何设置止损和止盈，也必须决定警报什么时候触发。用语言说，它可能只是一个“突破策略”。写成代码，它会分裂成许多不同的策略。
 
 现在可以看到代理的位置了。代理不应该把用户的第一句话当成已经完成的策略。相反，它应该找出那句话里面的空白。好的代理与其说是快速写代码的工具，不如说是不断追问缺失条件的工具。
@@ -44,6 +49,11 @@ Pine Script 之所以重要，是因为它会把这些小决定暴露出来。�
 
 这三点不是为了吓退新手。相反，它们是构建专业交易系统的最低地面。策略的收益率数字，只有站在这块地面上才有意义。
 
+<figure class="article-figure">
+  <img src="/assets/images/posts/trading-idea-to-pine-script/backtest-validation.png" alt="用放大镜检查回测收益和回撤区间的研究图片" loading="lazy" decoding="async">
+  <figcaption>回测数字不是结论，而是检查对象。尤其要通过回撤和成交假设去看它。</figcaption>
+</figure>
+
 AI 代理的发展也和这里相连。最近金融行业关于 AI 的讨论，正在从简单聊天机器人转向更实际的工作流。比起总结报告的工具，更重要的是能在多个系统之间计划并执行任务的代理。在金融领域，风险管理、合规、投资策略优化这类同时包含规则和例外的工作，天然适合代理系统。
 
 个人交易者也很可能经历同样的变化。过去，找到一个好指标就是优势。现在，更重要的优势是你能多快把一个假设变成代码，能多诚实地检验它，又能多快把它改好。
@@ -51,6 +61,11 @@ AI 代理的发展也和这里相连。最近金融行业关于 AI 的讨论，�
 我把这个趋势看作“从读图到策略编译”的移动。编译这个词听起来有点技术化，但意思很简单。它就是把脑子里的交易想法，变成可以执行的规则。就像文字可以被编译成代码，交易想法也应该被编译成 Pine Script。
 
 在这个过程中，代理会反复做四件事。
+
+<figure class="article-figure">
+  <img src="/assets/images/posts/trading-idea-to-pine-script/execution-risk.png" alt="图表信号经过警报和外部执行层的研究图片" loading="lazy" decoding="async">
+  <figcaption>Pine Script 信号和真实订单执行是不同层。严肃的自动化必须把这条路径单独设计清楚。</figcaption>
+</figure>
 
 1. 把用户的交易想法拆成明确条件。
 2. 把这些条件写成 Pine Script 指标或策略。

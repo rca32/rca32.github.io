@@ -462,6 +462,27 @@ svg {
   line-height: 1.45;
 }
 
+.article-figure {
+  margin: 2.7rem 0;
+}
+
+.article-figure img {
+  display: block;
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--ink), transparent 80%);
+  background: var(--surface);
+  box-shadow: 0 22px 52px rgba(23, 33, 27, 0.11);
+}
+
+.article-figure figcaption {
+  margin-top: 0.72rem;
+  border-left: 2px solid var(--accent);
+  padding-left: 0.85rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.58;
+}
+
 .post-content code {
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--surface), var(--accent) 5%);
@@ -743,6 +764,14 @@ svg {
 
   .post-content blockquote {
     font-size: 1.18rem;
+  }
+
+  .article-figure {
+    margin: 1.8rem 0;
+  }
+
+  .article-figure figcaption {
+    font-size: 0.82rem;
   }
 
   .market-visual {

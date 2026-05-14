@@ -30,6 +30,11 @@ This sounds like a strategy. But many things are missing. Does "above the moving
 
 It is natural that these questions feel annoying. But most of the strategy is hidden in these annoying parts. An idea often starts as one sentence. A strategy is made of dozens of small decisions.
 
+<figure class="article-figure">
+  <img src="/assets/images/posts/trading-idea-to-pine-script/strategy-rules.png" alt="Research image showing a chart idea decomposed into strategy rules and code structure" loading="lazy" decoding="async">
+  <figcaption>A good idea may start as one sentence, but a testable strategy appears only when conditions and exceptions are made explicit.</figcaption>
+</figure>
+
 Pine Script matters because it exposes those decisions. You have to decide where to call `strategy.entry()`, how to place stops and targets, and when alerts should fire. In words, it may be one "breakout strategy." In code, it splits into many different strategies.
 
 Now we can see where agents fit. An agent should not treat the user's first sentence as a finished strategy. It should find the blanks inside that sentence. A good agent is less a tool that writes code quickly and more a tool that keeps pressing on the missing conditions.
@@ -44,6 +49,11 @@ The third is the execution path. Pine Script strategies and indicators do not pl
 
 These three points are not warnings meant to scare beginners. They are the floor for building a serious trading system. A strategy's return number only means something when it stands on this floor.
 
+<figure class="article-figure">
+  <img src="/assets/images/posts/trading-idea-to-pine-script/backtest-validation.png" alt="Research image inspecting backtest returns and drawdowns with a magnifying glass" loading="lazy" decoding="async">
+  <figcaption>A backtest number is not a conclusion. It is something to inspect, especially through drawdowns and fill assumptions.</figcaption>
+</figure>
+
 The same pattern is visible in AI agents. Recent AI discussions in finance are moving beyond simple chatbots. Tools that summarize reports are less interesting than agents that plan and execute work across multiple systems. In finance, agentic systems naturally fit work where rules and exceptions coexist, such as risk management, compliance, and investment strategy optimization.
 
 The same shift is likely to reach individual traders. In the past, finding a good indicator was an edge. Now the more important edge is how quickly you can turn a hypothesis into code, test it honestly, and improve it again.
@@ -51,6 +61,11 @@ The same shift is likely to reach individual traders. In the past, finding a goo
 I think of this as a move from chart reading to strategy compilation. The word compilation may sound technical, but the idea is simple. It means turning a trading thought in your head into executable rules. Just as writing can be compiled into code, a trading idea should be compiled into Pine Script.
 
 In that process, an agent will repeat four jobs.
+
+<figure class="article-figure">
+  <img src="/assets/images/posts/trading-idea-to-pine-script/execution-risk.png" alt="Research image showing chart signals flowing through alerts and external execution layers" loading="lazy" decoding="async">
+  <figcaption>Pine Script signals and live order execution are separate layers. Serious automation designs that path explicitly.</figcaption>
+</figure>
 
 1. Break the user's trading idea into explicit conditions.
 2. Write those conditions as a Pine Script indicator or strategy.
