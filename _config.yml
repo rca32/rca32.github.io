@@ -1,3 +1,8 @@
 title: ChartAgent
 description: AI chart analysis blog
 theme: minima
+
+exclude:
+  - AGENTS.md
+  - README.md
+  - .github/
