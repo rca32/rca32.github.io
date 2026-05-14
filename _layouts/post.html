@@ -4,6 +4,24 @@ layout: default
 
 {%- assign translations = site.posts | where: "ref", page.ref | sort: "lang" -%}
 {%- assign date_format = "%Y-%m-%d" -%}
+{%- case page.lang -%}
+  {%- when "ko" -%}
+    {%- assign translations_label = "언어" -%}
+    {%- assign series_label = "연재" -%}
+    {%- assign series_body = "에이전트, Pine Script, 백테스트, 차트 전략 검증을 다룹니다." -%}
+  {%- when "ja" -%}
+    {%- assign translations_label = "言語" -%}
+    {%- assign series_label = "連載" -%}
+    {%- assign series_body = "エージェント、Pine Script、バックテスト、チャート戦略の検証を扱います。" -%}
+  {%- when "zh" -%}
+    {%- assign translations_label = "语言" -%}
+    {%- assign series_label = "系列" -%}
+    {%- assign series_body = "讨论代理、Pine Script、回测和图表策略验证。" -%}
+  {%- else -%}
+    {%- assign translations_label = "Languages" -%}
+    {%- assign series_label = "Series" -%}
+    {%- assign series_body = "Agent, Pine Script, backtesting, and chart strategy validation." -%}
+{%- endcase -%}
 
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-hero">
@@ -26,7 +44,7 @@ layout: default
     <aside class="article-aside" aria-label="Article context">
       {%- if translations.size > 1 -%}
         <div class="article-aside__block">
-          <span>Translations</span>
+          <span>{{ translations_label }}</span>
           <nav class="translation-nav" aria-label="Article translations">
             {%- for translation in translations -%}
               <a href="{{ translation.url | relative_url }}"{% if translation.lang == page.lang %} aria-current="page"{% endif %}>{{ translation.lang | upcase }}</a>
@@ -36,8 +54,8 @@ layout: default
       {%- endif -%}
 
       <div class="article-aside__block">
-        <span>Series</span>
-        <p>Agent, Pine Script, backtesting, and chart strategy validation.</p>
+        <span>{{ series_label }}</span>
+        <p>{{ series_body }}</p>
       </div>
     </aside>
 
