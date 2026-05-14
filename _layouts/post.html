@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+{%- assign translations = site.posts | where: "ref", page.ref | sort: "lang" -%}
+{%- assign date_format = "%Y-%m-%d" -%}
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-hero">
+    <div class="post-hero__inner">
+      <p class="eyebrow">ChartAgent Research</p>
+      <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+      <div class="post-meta">
+        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date: date_format }}
+        </time>
+        <span>{{ page.lang | upcase }}</span>
+        {%- if page.categories.size > 0 -%}
+          <span>{{ page.categories | join: " / " }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+  </header>
+
+  <div class="article-shell">
+    <aside class="article-aside" aria-label="Article context">
+      {%- if translations.size > 1 -%}
+        <div class="article-aside__block">
+          <span>Translations</span>
+          <nav class="translation-nav" aria-label="Article translations">
+            {%- for translation in translations -%}
+              <a href="{{ translation.url | relative_url }}"{% if translation.lang == page.lang %} aria-current="page"{% endif %}>{{ translation.lang | upcase }}</a>
+            {%- endfor -%}
+          </nav>
+        </div>
+      {%- endif -%}
+
+      <div class="article-aside__block">
+        <span>Series</span>
+        <p>Agent, Pine Script, backtesting, and chart strategy validation.</p>
+      </div>
+    </aside>
+
+    <div class="post-content e-content" itemprop="articleBody">
+      {{ content }}
+    </div>
+  </div>
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

@@ -1,0 +1,15 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <a class="site-footer__brand" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+      <p>{{ site.description | escape }}</p>
+    </div>
+
+    <nav class="site-footer__links" aria-label="Footer language selection">
+      <a href="{{ "/ko/" | relative_url }}" data-lang-switch="ko">한국어</a>
+      <a href="{{ "/en/" | relative_url }}" data-lang-switch="en">English</a>
+      <a href="{{ "/ja/" | relative_url }}" data-lang-switch="ja">日本語</a>
+      <a href="{{ "/zh/" | relative_url }}" data-lang-switch="zh">中文</a>
+    </nav>
+  </div>
+</footer>

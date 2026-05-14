@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {%- include head.html -%}
+
+  <body class="layout-{{ page.layout | default: "default" }} lang-{{ page.lang | default: "root" }}">
+    <a class="skip-link" href="#content">Skip to content</a>
+    {%- include header.html -%}
+
+    <main id="content" class="site-main" aria-label="Content">
+      {{ content }}
+    </main>
+
+    {%- include footer.html -%}
+
+    <script>
+      (function () {
+        var storageKey = "chartagent.preferredLang";
+        var links = document.querySelectorAll("[data-lang-switch]");
+
+        for (var i = 0; i < links.length; i += 1) {
+          links[i].addEventListener("click", function (event) {
+            try {
+              window.localStorage.setItem(storageKey, event.currentTarget.getAttribute("data-lang-switch"));
+            } catch (error) {
+              // Navigation still works when preferences cannot be saved.
+            }
+          });
+        }
+      }());
+    </script>
+  </body>
+</html>

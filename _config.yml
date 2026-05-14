@@ -1,6 +1,10 @@
 title: ChartAgent
-description: AI chart analysis blog
+description: Agentic Pine Script research for TradingView traders
 theme: minima
+lang: en
+timezone: Asia/Seoul
+url: "https://blog.chartagent.net"
+permalink: /:year/:month/:day/:title/
 
 exclude:
   - AGENTS.md

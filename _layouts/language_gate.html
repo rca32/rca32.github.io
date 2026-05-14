@@ -1,0 +1,75 @@
+---
+layout: default
+---
+
+<section class="language-gate" aria-labelledby="language-gate-title">
+  <div class="language-gate__copy">
+    <p class="eyebrow">ChartAgent</p>
+    <h1 id="language-gate-title">Agentic chart research for systematic traders.</h1>
+    <p>Redirecting to the best language for your browser.</p>
+  </div>
+
+  <nav class="language-gate__options" aria-label="Language selection">
+    <a href="{{ "/ko/" | relative_url }}" data-lang="ko" data-lang-switch="ko">한국어</a>
+    <a href="{{ "/en/" | relative_url }}" data-lang="en" data-lang-switch="en">English</a>
+    <a href="{{ "/ja/" | relative_url }}" data-lang="ja" data-lang-switch="ja">日本語</a>
+    <a href="{{ "/zh/" | relative_url }}" data-lang="zh" data-lang-switch="zh">中文</a>
+  </nav>
+</section>
+
+<script>
+  (function () {
+    var supported = {
+      ko: "{{ "/ko/" | relative_url }}",
+      en: "{{ "/en/" | relative_url }}",
+      ja: "{{ "/ja/" | relative_url }}",
+      zh: "{{ "/zh/" | relative_url }}"
+    };
+    var storageKey = "chartagent.preferredLang";
+
+    function normalizeLang(value) {
+      if (!value) return "";
+      var lang = value.toLowerCase();
+      if (lang.indexOf("ko") === 0) return "ko";
+      if (lang.indexOf("ja") === 0) return "ja";
+      if (lang.indexOf("zh") === 0) return "zh";
+      if (lang.indexOf("en") === 0) return "en";
+      return "";
+    }
+
+    function detectLang() {
+      try {
+        var stored = normalizeLang(window.localStorage.getItem(storageKey));
+        if (supported[stored]) return stored;
+      } catch (error) {
+        // Continue with browser language detection when localStorage is unavailable.
+      }
+
+      var languages = navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || navigator.userLanguage || ""];
+
+      for (var i = 0; i < languages.length; i += 1) {
+        var lang = normalizeLang(languages[i]);
+        if (supported[lang]) return lang;
+      }
+
+      return "en";
+    }
+
+    var links = document.querySelectorAll("[data-lang]");
+    for (var j = 0; j < links.length; j += 1) {
+      links[j].addEventListener("click", function (event) {
+        try {
+          window.localStorage.setItem(storageKey, event.currentTarget.getAttribute("data-lang"));
+        } catch (error) {
+          // Manual navigation still works when preferences cannot be saved.
+        }
+      });
+    }
+
+    if (window.location.pathname === "/" || window.location.pathname === "{{ "/" | relative_url }}") {
+      window.location.replace(supported[detectLang()]);
+    }
+  }());
+</script>

@@ -1,0 +1,101 @@
+---
+layout: default
+---
+
+{%- assign localized_posts = site.posts | where: "lang", page.lang -%}
+
+{%- case page.lang -%}
+  {%- when "ko" -%}
+    {%- assign hero_title = "차트 감각을 Pine Script 전략으로 바꾸는 리서치" -%}
+    {%- assign hero_body = "TradingView 사용자와 시스템 트레이더를 위해 에이전트, 매매 가설, 백테스트, 실행 리스크를 차분하게 다룹니다." -%}
+    {%- assign latest_label = "최신 글" -%}
+    {%- assign rhythm_label = "주간 관찰" -%}
+    {%- assign rhythm_body = "에이전트와 차트 매매의 변화를 매주 하나의 검증 가능한 관점으로 정리합니다." -%}
+    {%- assign craft_label = "전략 작성" -%}
+    {%- assign craft_body = "아이디어가 Pine Script 코드, 알림 조건, 포지션 관리로 분해되는 과정을 추적합니다." -%}
+    {%- assign risk_label = "검증 기준" -%}
+    {%- assign risk_body = "리페인팅, 체결 가정, 과최적화처럼 숫자 뒤에 숨은 문제를 먼저 의심합니다." -%}
+    {%- assign empty_text = "아직 한국어 글이 없습니다." -%}
+  {%- when "ja" -%}
+    {%- assign hero_title = "チャートの直感を Pine Script 戦略へ変えるリサーチ" -%}
+    {%- assign hero_body = "TradingView ユーザーとシステムトレーダーのために、エージェント、売買仮説、バックテスト、実行リスクを静かに掘り下げます。" -%}
+    {%- assign latest_label = "最新記事" -%}
+    {%- assign rhythm_label = "週次観察" -%}
+    {%- assign rhythm_body = "エージェントとチャート売買の変化を、毎週一つの検証可能な視点にまとめます。" -%}
+    {%- assign craft_label = "戦略作成" -%}
+    {%- assign craft_body = "アイデアが Pine Script、アラート条件、ポジション管理へ分解される過程を追います。" -%}
+    {%- assign risk_label = "検証基準" -%}
+    {%- assign risk_body = "リペイント、約定の仮定、過最適化など、数字の背後にある問題を先に疑います。" -%}
+    {%- assign empty_text = "日本語の記事はまだありません。" -%}
+  {%- when "zh" -%}
+    {%- assign hero_title = "把图表直觉转化为 Pine Script 策略的研究" -%}
+    {%- assign hero_body = "面向 TradingView 用户和系统交易者，持续讨论代理、交易假设、回测和执行风险。" -%}
+    {%- assign latest_label = "最新文章" -%}
+    {%- assign rhythm_label = "每周观察" -%}
+    {%- assign rhythm_body = "每周用一个可验证的视角，整理代理与图表交易的变化。" -%}
+    {%- assign craft_label = "策略编写" -%}
+    {%- assign craft_body = "追踪交易想法如何被拆成 Pine Script、警报条件和仓位管理。" -%}
+    {%- assign risk_label = "验证标准" -%}
+    {%- assign risk_body = "先怀疑重绘、成交假设和过度优化这些藏在数字背后的问题。" -%}
+    {%- assign empty_text = "还没有中文文章。" -%}
+  {%- else -%}
+    {%- assign hero_title = "Research for turning chart intuition into Pine Script strategy" -%}
+    {%- assign hero_body = "For TradingView users and systematic traders, ChartAgent studies agents, trading hypotheses, backtests, and execution risk." -%}
+    {%- assign latest_label = "Latest Research" -%}
+    {%- assign rhythm_label = "Weekly Observation" -%}
+    {%- assign rhythm_body = "Each week turns one shift in agentic chart trading into a testable point of view." -%}
+    {%- assign craft_label = "Strategy Craft" -%}
+    {%- assign craft_body = "We follow how an idea becomes Pine Script, alert logic, and position management." -%}
+    {%- assign risk_label = "Validation Standard" -%}
+    {%- assign risk_body = "Repainting, fill assumptions, and overfitting are questioned before the return number is trusted." -%}
+    {%- assign empty_text = "No posts in this language yet." -%}
+{%- endcase -%}
+
+<section class="home-hero">
+  <div class="home-hero__copy">
+    <p class="eyebrow">ChartAgent Research</p>
+    <h1>{{ hero_title }}</h1>
+    <p>{{ hero_body }}</p>
+  </div>
+
+  <div class="market-visual" aria-hidden="true">
+    <img src="{{ "/assets/images/chartagent-research-hero.png" | relative_url }}" alt="">
+  </div>
+</section>
+
+<section class="research-principles" aria-label="Research principles">
+  <div>
+    <span>{{ rhythm_label }}</span>
+    <p>{{ rhythm_body }}</p>
+  </div>
+  <div>
+    <span>{{ craft_label }}</span>
+    <p>{{ craft_body }}</p>
+  </div>
+  <div>
+    <span>{{ risk_label }}</span>
+    <p>{{ risk_body }}</p>
+  </div>
+</section>
+
+<section id="latest" class="latest-section" aria-labelledby="latest-heading">
+  <div class="section-heading">
+    <p class="eyebrow">Journal</p>
+    <h2 id="latest-heading">{{ latest_label }}</h2>
+  </div>
+
+  {%- if localized_posts.size > 0 -%}
+    <ol class="post-list">
+      {%- for post in localized_posts -%}
+        <li class="post-list__item">
+          <a class="post-list__link" href="{{ post.url | relative_url }}">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            <span>{{ post.title | escape }}</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ol>
+  {%- else -%}
+    <p class="empty-state">{{ empty_text }}</p>
+  {%- endif -%}
+</section>

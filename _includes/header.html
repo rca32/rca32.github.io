@@ -1,0 +1,28 @@
+{%- assign current_lang = page.lang | default: "en" -%}
+{%- assign home_url = "/" | append: current_lang | append: "/" -%}
+
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <a class="site-brand" rel="author" href="{{ home_url | relative_url }}" aria-label="ChartAgent home">
+      <span class="site-brand__mark" aria-hidden="true">
+        <img src="{{ "/assets/images/chartagent-brand-icon.png" | relative_url }}" alt="">
+      </span>
+      <span class="site-brand__text">
+        <strong>{{ site.title | escape }}</strong>
+        <span>Strategy Research</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="{{ home_url | relative_url }}">Research</a>
+      <a href="{{ home_url | append: "#latest" | relative_url }}">Latest</a>
+    </nav>
+
+    <nav class="language-nav" aria-label="Language selection">
+      <a href="{{ "/ko/" | relative_url }}" data-lang-switch="ko"{% if current_lang == "ko" %} aria-current="page"{% endif %}>KO</a>
+      <a href="{{ "/en/" | relative_url }}" data-lang-switch="en"{% if current_lang == "en" %} aria-current="page"{% endif %}>EN</a>
+      <a href="{{ "/ja/" | relative_url }}" data-lang-switch="ja"{% if current_lang == "ja" %} aria-current="page"{% endif %}>JA</a>
+      <a href="{{ "/zh/" | relative_url }}" data-lang-switch="zh"{% if current_lang == "zh" %} aria-current="page"{% endif %}>ZH</a>
+    </nav>
+  </div>
+</header>
